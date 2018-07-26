@@ -45,11 +45,11 @@
     mapDiv.style.width = w.toString() + 'px';
     mapDiv.style.height = h.toString() + 'px';
 
-    var mymap = L.map('mapid').setView([21.47, -157.96], 13);
+    var mymap = L.map('mapid').setView([21.47, -157.96], 10);
     var mapBoxToken = 'pk.eyJ1Ijoiam9jaG9pMDcwNyIsImEiOiJjajczMWZrcTkwNHo2MzNvNGIzOHI3MW85In0.GSHlVF_HltDmEvomI2m_CA';
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: '',
-      maxZoom: 4,
+      maxZoom: 18,
       id: 'mapbox.streets',
       accessToken: mapBoxToken
     }).addTo(mymap);
