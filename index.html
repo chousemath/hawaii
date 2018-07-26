@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>hawaii</title>
+  <meta name="description" content="hawaii">
+  <meta name="author" content="joseph">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+    }
+
+    #mapid {
+      height: 200px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="mapid"></div>
+
+  <script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var mapDiv = document.getElementById('mapid');
+    mapDiv.style.width = w.toString() + 'px';
+    mapDiv.style.height = h.toString() + 'px';
+
+    var mymap = L.map('mapid').setView([21.47, -157.96], 13);
+    var mapBoxToken = 'pk.eyJ1Ijoiam9jaG9pMDcwNyIsImEiOiJjajczMWZrcTkwNHo2MzNvNGIzOHI3MW85In0.GSHlVF_HltDmEvomI2m_CA';
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: '',
+      maxZoom: 11,
+      id: 'mapbox.streets',
+      accessToken: mapBoxToken
+    }).addTo(mymap);
+
+    // mark the North Shore
+    var northShoreCircle = L.circle([21.68, -158.170002], {
+      color: '#ccccff',
+      fillColor: '#ccccff',
+      fillOpacity: 0.4,
+      radius: 15000
+    }).addTo(mymap);
+    northShoreCircle.bindPopup('노스쇼어');
+
+
+    var markers = [
+      {
+        title: '지오반니새우트럭',
+        coord: [21.581019, -158.105010]
+      },
+      {
+        title: 'Laniakea 해변',
+        coord: [21.619381, -158.085420]
+      },
+      {
+        title: '돌플랜테이션',
+        coord: [21.526361, -158.037670]
+      },
+      {
+        title: 'Green World Coffee Farm',
+        coord: [21.513463, -158.041058]
+      },
+      {
+        title: 'Kualoa Ranch & Zipline',
+        coord: [21.520957, -157.837293]
+      },
+      {
+        title: '호놀룰루 국제공항',
+        coord: [21.326944, -157.925378]
+      },
+      {
+        title: "Ruth's Chris Steak House",
+        coord: [21.300920, -157.862523]
+      },
+      {
+        title: '룰루마후 팔스',
+        coord: [21.354121, -157.811313]
+      },
+      {
+        title: 'Judd Trail',
+        coord: [21.345055, -157.822735]
+      },
+      {
+        title: 'Steak Shack',
+        coord: [21.278239, -157.833523]
+      },
+      {
+        title: "Leonard's Bakery",
+        coord: [21.285172, -157.813342]
+      },
+      {
+        title: 'Ono Seafood',
+        coord: [21.281437, -157.813898]
+      },
+      {
+        title: '와이키키 비치',
+        coord: [21.276416, -157.827104]
+      },
+      {
+        title: 'Musubi Cafe Iyasume',
+        coord: [21.279374, -157.825989]
+      },
+      {
+        title: '디아먼드 헤드 크레이터 하이크',
+        coord: [21.263304, -157.804228]
+      },
+      {
+        title: 'Makapu‘u Point Lighthouse Trail',
+        coord: [21.309078, -157.650488]
+      },
+      {
+        title: '코코 크레이터 레일웨이 트레일',
+        coord: [21.281148, -157.691982]
+      },
+      {
+        title: 'Hanauma Bay',
+        coord: [21.273865, -157.695071]
+      },
+      {
+        title: '씨 라이프 파크 하와이',
+        coord: [21.313484, -157.663148]
+      },
+      {
+        title: '래니카이 비치',
+        coord: [21.393323, -157.715446]
+      },
+      {
+        title: '카일루아 비치 공원',
+        coord: [21.397614, -157.727036]
+      },
+      {
+        title: '부츠앤키모스',
+        coord: [21.392042, -157.741393]
+      }
+    ];
+
+    markers.forEach(function (m) {
+      var marker = L.marker(m.coord).addTo(mymap);
+      marker.bindPopup(m.title);
+    });
+
+  </script>
+</body>
+
+</html>
